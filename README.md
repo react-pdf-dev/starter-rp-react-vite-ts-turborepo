@@ -1,5 +1,7 @@
 # React PDF Starter Toolkit for React.js and TypeScript in Turborepo with Vite
 
+[![Open example in codesandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/github/react-pdf-dev/starter-rp-react-vite-ts-turborepo/main)
+
 Welcome to the React PDF Starter Toolkit! This repository provides a comprehensive guide on integrating React PDF with Vite, React.js, and TypeScript in Turborepo. It showcases how React PDF can be integrated and rendered as part of a monorepo project.
 
 ## Table of Contents

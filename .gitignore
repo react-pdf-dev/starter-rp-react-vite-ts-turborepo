@@ -9,3 +9,11 @@ dist-ssr
 .cache
 server/dist
 public/dist
+
+# locks files
+
+pnpm-lock.yaml
+bun.lockb
+yarn.lock
+package-lock.json
+ 

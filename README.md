@@ -50,7 +50,7 @@ This repository includes an example project to demonstrate React PDF in action.
    bun run dev
    ```
 
-2. **Open in Browser**: Open your browser and navigate to `http://localhost:3000` (or the port specified in your terminal) to see the example project in action
+2. **Open in Browser**: Open your browser and navigate to `http://localhost:5173` (or the port specified in your terminal) to see the example project in action
 
 ### Using the React PDF Component
 
@@ -59,26 +59,27 @@ Once the example project is running, you can explore the source code to see how 
 1.  **Import the component**: Import the desired React PDF component into your codes
 
 ```tsx
+"use client";
 import {
 	RPProvider,
 	RPDefaultLayout,
 	RPPages,
-	RPProviderProps,
-	RPLayoutProps,
+	type RPLayoutProps,
+	type RPProviderProps,
 } from "@pdf-viewer/react";
 
-interface Props {
+export interface Props {
 	showToolbar?: boolean;
 	providerProps?: RPProviderProps;
 	defaultLayoutProps?: RPLayoutProps;
 }
 
-const AppPdfViewer = (props: Props) => {
+export const AppPdfViewer = (props: Props) => {
 	const { showToolbar = true, providerProps, defaultLayoutProps } = props;
 
 	return (
 		<RPProvider
-			src="https://cdn.codewithmosh.com/image/upload/v1721763853/guides/web-roadmap.pdf"
+			src="https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/web/compressed.tracemonkey-pldi-09.pdf"
 			{...providerProps}>
 			{showToolbar ? (
 				<RPDefaultLayout {...defaultLayoutProps}>
@@ -92,8 +93,6 @@ const AppPdfViewer = (props: Props) => {
 		</RPProvider>
 	);
 };
-
-export default AppPdfViewer;
 ```
 
 2. **Import Config Component**: Import the Config component
@@ -112,30 +111,58 @@ export default AppProviders;
 
 3. **Use the AppPdfViewer component in page**: Add the React PDF component to your page
 
-```jsx
-import { AppProviders, AppPdfViewer } from "./@repo/ui";
+```tsx
+import React from "react";
+import { createRoot } from "react-dom/client";
+import "./style.css";
+import { AppPdfViewer, AppPdfViewerConfig } from "@repo/ui";
 
-export default function App() {
-	return (
-    <AppProviders>
-		<div className="w-[1028px] h-[700px] mx-auto">
-			<h1>RP Starter Toolkit: Nextjs + Javascript</h1>
-			<br />
-			<h2>Default Toolbar</h2>
-			<AppPdfViewer />
-			<h2>Without Toolbar</h2>
-			<AppPdfViewer showToolbar={false} />
-			<h2>Mobile</h2>
-			<AppPdfViewer defaultLayoutProps={{ style: { width: "500px" } }} />
-		</div>
-    </AppProviders>
-	);
-}
+const App = () => (
+	<div>
+		<AppPdfViewerConfig>
+			<div
+				style={{
+					maxWidth: "1024px",
+					margin: "0 auto",
+				}}>
+				<h1>RP Starter Toolkit: Vite + React + Typescript in Turborepo</h1>
+				<br />
+				<h2>Default Toolbar</h2>
+				<AppPdfViewer
+					providerProps={{
+						src: `https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/web/compressed.tracemonkey-pldi-09.pdf`,
+						initialPage: 1,
+					}}
+					defaultLayoutProps={{ style: { width: "100%", height: "600px" } }}
+				/>
+				<br />
+				<h2>Without Toolbar</h2>
+				<AppPdfViewer
+					showToolbar={false}
+					providerProps={{
+						src: `https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/web/compressed.tracemonkey-pldi-09.pdf`,
+						initialPage: 1,
+					}}
+				/>
+				<br />
+				<h2>Mobile</h2>
+				<AppPdfViewer
+					defaultLayoutProps={{
+						style: { width: "500px", margin: "0 auto" },
+					}}
+				/>
+			</div>
+		</AppPdfViewerConfig>
+	</div>
+);
+
+createRoot(document.getElementById("app")!).render(<App />);
+
 ```
 
 ## Examples
 
-For more examples, please refer to the `apps/web/app/page.tsx` file in this repository:
+For more examples, please refer to the `apps/web/app/main.tsx` file in this repository:
 
 - Default Toolbar
 - Without Toolbar

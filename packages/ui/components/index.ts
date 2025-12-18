@@ -1,4 +1,4 @@
 export * from "./header";
 export * from "./counter";
-export * from "./PdfViewer";
-export * from "./PdfViewerConfig";
+export * from "./AppPdfViewer";
+export * from "./AppPdfViewerConfig";

@@ -33,7 +33,7 @@ const App = () => (
 				<h2>Mobile</h2>
 				<AppPdfViewer
 					defaultLayoutProps={{
-						style: { width: "500px", margin: "0 auto" },
+						style: { width: "500px" },
 					}}
 				/>
 			</div>

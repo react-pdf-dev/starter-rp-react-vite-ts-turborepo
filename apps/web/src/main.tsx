@@ -18,7 +18,10 @@ const App = () => (
 						src: `https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/web/compressed.tracemonkey-pldi-09.pdf`,
 						initialPage: 1,
 					}}
-					defaultLayoutProps={{ style: { width: "100%", height: "600px" } }}
+					defaultLayoutProps={{
+						toolbar: true,
+						style: { width: "100%", height: "600px" },
+					}}
 				/>
 				<br />
 				<h2>Without Toolbar</h2>
@@ -33,6 +36,7 @@ const App = () => (
 				<h2>Mobile</h2>
 				<AppPdfViewer
 					defaultLayoutProps={{
+						toolbar: true,
 						style: { width: "500px" },
 					}}
 				/>

@@ -12,15 +12,15 @@
 		"lint": "eslint \"**/*.ts\""
 	},
 	"dependencies": {
-		"@pdf-viewer/react": "latest",
-		"react": "19.2.0",
-		"react-dom": "19.2.0"
+		"@react-pdf-kit/viewer": "latest",
+		"react": "^19.2.0",
+		"react-dom": "^19.2.0"
 	},
 	"devDependencies": {
 		"@types/react": "^19.0.1",
 		"@types/react-dom": "^19.0.2",
-		"@repo/eslint-config": "workspace:*",
-		"@repo/typescript-config": "workspace:*",
+		"@repo/eslint-config": "*",
+		"@repo/typescript-config": "*",
 		"eslint": "^8.57.0",
 		"typescript": "5.5.4"
 	}

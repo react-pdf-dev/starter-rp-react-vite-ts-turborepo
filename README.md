@@ -2,7 +2,7 @@
 
 [![Open example in codesandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/github/react-pdf-dev/starter-rp-react-vite-ts-turborepo/main)
 
-Welcome to the React PDF Starter Toolkit! This repository provides a comprehensive guide on integrating React PDF with Vite, React.js, and TypeScript in Turborepo. It showcases how React PDF can be integrated and rendered as part of a monorepo project.
+Welcome to the React PDF Kit Starter Toolkit! This repository provides a comprehensive guide on integrating React PDF with Vite, React.js, and TypeScript in Turborepo. It showcases how React PDF Viewer component can be integrated and rendered as part of a monorepo project.
 
 ## Table of Contents
 
@@ -18,7 +18,7 @@ Welcome to the React PDF Starter Toolkit! This repository provides a comprehensi
 1. **Clone the Repository**: If you haven't already, clone the repository and navigate into the project directory.
 
    ```bash
-   git clone https://github.com/react-pdf-dev/starter-rp-react-vite-ts-turborepo.git
+   git clone https://github.com/react-pdf-kit/starter-rp-react-vite-ts-turborepo.git
    cd starter-rp-react-vite-ts-turborepo
    ```
 
@@ -36,7 +36,7 @@ Welcome to the React PDF Starter Toolkit! This repository provides a comprehensi
 
 ### Running the Example Project
 
-This repository includes an example project to demonstrate React PDF in action.
+This repository includes an example project to demonstrate React PDF Kit in action.
 
 1. **Start the Development Server**: Use the following command to start the development server
 
@@ -62,11 +62,11 @@ Once the example project is running, you can explore the source code to see how 
 "use client";
 import {
 	RPProvider,
-	RPDefaultLayout,
+	RPLayout,
 	RPPages,
 	type RPLayoutProps,
 	type RPProviderProps,
-} from "@pdf-viewer/react";
+} from "@react-pdf-kit/viewer";
 
 export interface Props {
 	showToolbar?: boolean;
@@ -76,15 +76,16 @@ export interface Props {
 
 export const AppPdfViewer = (props: Props) => {
 	const { showToolbar = true, providerProps, defaultLayoutProps } = props;
+	const { toolbar, style } = defaultLayoutProps ?? {};
 
 	return (
 		<RPProvider
 			src="https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/web/compressed.tracemonkey-pldi-09.pdf"
 			{...providerProps}>
 			{showToolbar ? (
-				<RPDefaultLayout {...defaultLayoutProps}>
+				<RPLayout toolbar={toolbar} style={style}>
 					<RPPages />
-				</RPDefaultLayout>
+				</RPLayout>
 			) : (
 				<div style={{ width: "100%", height: "550px" }}>
 					<RPPages />
@@ -98,7 +99,7 @@ export const AppPdfViewer = (props: Props) => {
 2. **Import Config Component**: Import the Config component
 
 ```tsx
-import { RPConfig, RPConfigProps } from "@pdf-viewer/react";
+import { RPConfig, RPConfigProps } from "@react-pdf-kit/viewer";
 import { FC } from "react";
 
 const AppProviders: FC<RPConfigProps> = ({ children }) => (
@@ -125,7 +126,7 @@ const App = () => (
 					maxWidth: "1024px",
 					margin: "0 auto",
 				}}>
-				<h1>RP Starter Toolkit: Vite + React + Typescript in Turborepo</h1>
+				<h1>React PDF Kit Starter Toolkit: Vite + React + Typescript in Turborepo</h1>
 				<br />
 				<h2>Default Toolbar</h2>
 				<AppPdfViewer
@@ -133,7 +134,7 @@ const App = () => (
 						src: `https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/web/compressed.tracemonkey-pldi-09.pdf`,
 						initialPage: 1,
 					}}
-					defaultLayoutProps={{ style: { width: "100%", height: "600px" } }}
+					defaultLayoutProps={{ toolbar: true, style: { width: "100%", height: "600px" } }}
 				/>
 				<br />
 				<h2>Without Toolbar</h2>
@@ -148,6 +149,7 @@ const App = () => (
 				<h2>Mobile</h2>
 				<AppPdfViewer
 					defaultLayoutProps={{
+						toolbar: true,
 						style: { width: "500px", margin: "0 auto" },
 					}}
 				/>
@@ -170,8 +172,13 @@ For more examples, please refer to the `apps/web/app/main.tsx` file in this repo
 
 _Remark: If you would like more examples, feel free open an issue._
 
-For more configurations, please check the [documentation](https://docs.react-pdf.dev) site.
+For more configurations, please check the [documentation](https://docs.react-pdf-kit.dev) site.
+
+## Meta
+
+- Homepage: [https://www.react-pdf-kit.dev](https://www.react-pdf-kit.dev)
+- Docs: [https://docs.react-pdf-kit.dev](https://docs.react-pdf-kit.dev)
 
 ---
 
-Thank you for using React PDF! We hope this toolkit helps you build amazing Next.js applications. If you have any questions or need further assistance on this example, please feel free to open an issue. Happy coding!
+Thank you for using React PDF Kit! We hope this toolkit helps you build amazing React.js applications. If you have any questions or need further assistance on this example, please feel free to open an issue. Happy coding!

@@ -2,12 +2,16 @@
 	// These tasks will run in order when initializing your CodeSandbox project.
 	"setupTasks": [
 		{
-			"command": "npm install -g vite",
-			"name": "Installing Vite"
+			"name": "Node Version",
+			"command": "node -v"
 		},
 		{
-			"command": "npm install --legacy-peer-deps",
-			"name": "Installing Dependencies"
+			"name": "Installing Vite",
+			"command": "npm install -g vite"
+		},
+		{
+			"name": "Installing Dependencies",
+			"command": "npm install --legacy-peer-deps"
 		}
 	],
 

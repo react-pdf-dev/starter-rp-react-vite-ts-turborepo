@@ -10,7 +10,7 @@ const App = () => (
 					maxWidth: "1024px",
 					margin: "0 auto",
 				}}>
-				<h1>RP Starter Toolkit: Vite + React + Typescript in Turborepo</h1>
+				<h1>React PDF Kit Starter Toolkit: Vite + React + Typescript in Turborepo</h1>
 				<br />
 				<h2>Default Toolbar</h2>
 				<AppPdfViewer
